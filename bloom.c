@@ -121,6 +121,28 @@ void bloom_print(struct bloom * bloom)
   (void)printf(" ->hash functions = %d\n", bloom->hashes);
 }
 
+void bloom_print_contents(struct bloom * bloom)
+{
+  const int n_bytes = bloom->bits >> 3;
+  register unsigned char cur_byte;
+
+  printf("________________________________________\n");
+  for (int i=0; i<n_bytes; i++) {
+    cur_byte = bloom->bf[i];
+    for (int j=0; j<8; j++) {
+      if ((cur_byte >> j) & 0x01) {
+        printf("\u25A0");
+      } else {
+        printf(" ");
+      }
+    }
+    if (i % 5 == 0) {
+      printf("\n");
+    }
+  }
+  printf("\n________________________________________\n");
+}
+
 
 void bloom_free(struct bloom * bloom)
 {

@@ -110,6 +110,12 @@ int bloom_add(struct bloom * bloom, const void * buffer, int len);
  */
 void bloom_print(struct bloom * bloom);
 
+/** ***************************************************************************
+ * Print (to stdout) blanks and filled blocks for bits set in filter.
+ * Debugging aid.
+ *
+ */
+void bloom_print_contents(struct bloom * bloom);
 
 /** ***************************************************************************
  * Deallocate internal storage.
