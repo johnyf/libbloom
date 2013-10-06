@@ -103,6 +103,13 @@ int bloom_check(struct bloom * bloom, const void * buffer, int len);
  */
 int bloom_add(struct bloom * bloom, const void * buffer, int len);
 
+/** ***************************************************************************
+ * Copy a Bloom filter to another.
+ * Wrapper of destination filter initialization identical to source filter,
+ * then memcpy of the filter buffer.
+ *
+ */
+void bloom_copy(struct bloom * dest, struct bloom * src);
 
 /** ***************************************************************************
  * Print (to stdout) info about this bloom filter. Debugging aid.

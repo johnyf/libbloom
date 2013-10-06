@@ -29,7 +29,7 @@ LIB=-lm
 CC=gcc -Wall ${OPT} ${MM} -std=c99 -fPIC
 
 ifeq ($(MM),)
-MM=-m32
+MM=-m64
 endif
 
 ifeq ($(BUILD_OS),Linux)

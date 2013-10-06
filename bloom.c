@@ -97,6 +97,11 @@ int bloom_init(struct bloom * bloom, int entries, double error)
   return 0;
 }
 
+void bloom_copy(struct bloom * dest, struct bloom * src)
+{
+	bloom_init(dest, src->entries, src->error);
+	memcpy(dest->bf, src->bf, src->bytes);
+}
 
 int bloom_check(struct bloom * bloom, const void * buffer, int len)
 {
